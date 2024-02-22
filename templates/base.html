@@ -1,0 +1,57 @@
+<!doctype html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Store FarFore{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="{% static 'porcelain.png' %}" >
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="{% url 'index' %}" class="navbar-brand">Главная</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'product_list' %}">Товары</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'order_list' %}">Заказы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'customer_list' %}">Клиенты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}">Администрирование</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+            <p>Скоро тут появится текст...</p>
+        {% endblock %}
+    </div>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+        {% load i18n %}
+        {% now "Y" as current_year %}
+        {% blocktranslate %}<p>Copyright &copy; 7Sven Web Studio {{ current_year }} </p>{% endblocktranslate %}
+        </div>
+    </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
